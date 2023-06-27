@@ -64,5 +64,5 @@ switch (process.env.NODE_ENV) {
       }
     );
 }
-
+// sequelize db:create --charset utf8mb4 --collate utf8mb4_unicode_ci
 module.exports = database;
