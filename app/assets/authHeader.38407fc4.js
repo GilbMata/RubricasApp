@@ -1,0 +1,1 @@
+import{E as e}from"./index.302b6eaf.js";function o(){const t=e();return t.user&&t.user.token?{"Content-Type":"application/json",Accept:"application/json","x-access-token":t.user.token}:{}}export{o as a};

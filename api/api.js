@@ -11,17 +11,16 @@ const cors = require("cors"),
   history = require("connect-history-api-fallback"),
   dotenv = require("dotenv");
 
-dotenv.config({ path: "./config.env" });
-
-/**
- * server configuration
- */
+//  SERVER CONFIGURATION
 const config = require("../config/"),
   dbService = require("./services/db.service"),
   auth = require("./policies/auth.policy");
 
 // environment: development, staging, testing, production
 const environment = process.env.NODE_ENV;
+if (process.env.NODE_ENV !== "production") {
+  dotenv.config({ path: "./config.env" });
+}
 console.log("🚀 ~ environment", environment);
 
 /**

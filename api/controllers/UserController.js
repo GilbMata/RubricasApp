@@ -4,6 +4,8 @@ const User = require("../models/User");
 const authService = require("../services/auth.service");
 const bcryptService = require("../services/bcrypt.service");
 
+const EntitySchema = require("typeorm").EntitySchema;
+
 const UserController = () => {
   const register = async (req, res) => {
     try {
@@ -106,6 +108,7 @@ const UserController = () => {
   const getAll = async (req, res) => {
     try {
       const users = await User.findAll({ include: Role });
+      // console.log("🚀 ~ getAll ~ users:", users);
       return res.status(200).json({ users });
     } catch (err) {
       console.log(err);
@@ -167,7 +170,7 @@ const UserController = () => {
         },
       });
       if (!userdb) {
-        return res.status(400).json({ msg: "Usuario existente" });
+        return res.status(400).json({ msg: "Usuario no existe" });
       }
       const updateuserdb = await User.update(
         {
